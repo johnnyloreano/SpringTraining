@@ -7,19 +7,36 @@
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
 
+    <context:property-placeholder location="classpath:application.properties"/>
+    <bean id="fortuneService"
+        class="springdemo.HappyFortuneService"
+    >
+    </bean>
+    <bean id="randomFortuneService"
+          class="springdemo.RandomFortuneService"
+    >
+    </bean>
     <bean id="baseballCoach"
         class = "springdemo.BaseballCoach"
     >
+        <constructor-arg ref="fortuneService"/>
     </bean>
     <bean id="volleyballCoach"
           class = "springdemo.VolleyballCoach"
     >
+        <constructor-arg ref="fortuneService"/>
     </bean>
     <bean id="trackCoach"
           class = "springdemo.TrackCoach"
     >
+        <constructor-arg ref="fortuneService"/>
     </bean>
 
+    <bean id="pogoballCoach" class="springdemo.PogoballCoach">
+        <property name="fortuneService" ref="randomFortuneService" />
+        <property name="team" value="${foo.team}" />
+        <property name="emailAddress" value="${foo.email}" />
+    </bean>
 </beans>
 
 

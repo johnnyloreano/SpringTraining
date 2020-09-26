@@ -1,26 +1,22 @@
-package springdemo;
+package AnnotationsIoC;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import springdemo.Coach;
 
-public class SpringHelloApp {
+public class AnnotationIOCHelloApp {
     public static void main(String[] args) {
 
         // Load the SPRING configuration file for BEANS
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beansScope-applicationContext.xml");
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("annotationsIOC-applicationContext.xml");
 
         //Create a class based in the BEAN inside the Config file
-//        Coach theCoach = context.getBean("trackCoach", Coach.class);
-        Coach anotherCoach = context.getBean("baseballCoach", Coach.class);
-//        Coach justACoach = context.getBean("volleyballCoach", Coach.class);
-//        PogoballCoach theBestCoach = context.getBean("pogoballCoach", PogoballCoach.class);
-        //Call the method, as usual
-//        System.out.println(theCoach.getDailyWorkout());
-//        System.out.println(anotherCoach.getDailyWorkout());
-//        System.out.println(anotherCoach.getDailyFortune());
-//        System.out.println(justACoach.getDailyWorkout());
-//        System.out.println(theBestCoach.getEmailAddress());
-//        System.out.println(theBestCoach.getTeam());
-//        System.out.println(theBestCoach.getDailyFortune());
+        TrackCoach anotherCoach = context.getBean("trackCoach", TrackCoach.class);
+        TennisCoach tennisCoach = context.getBean("tennisCoach", TennisCoach.class);
+        BaseballCoach baseballCoach = context.getBean("baseballCoach", BaseballCoach.class);
+//        Call the method, as usual
+        System.out.println(anotherCoach.getDailyWorkout());
+        System.out.println(tennisCoach.getDailyFortune());
+        System.out.println(baseballCoach.getDailyFortune());
 
         context.close();
     }

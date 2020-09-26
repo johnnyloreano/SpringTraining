@@ -1,18 +1,18 @@
-package Beans;
+package AnnotationsIoC;
 
 
 
 import org.springframework.beans.factory.DisposableBean;
-import springdemo.Coach;
-import springdemo.FortuneService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
-public class BaseballCoach implements Coach, DisposableBean {
+@Component
+public class BaseballCoach implements Coach{
 
     private FortuneService fortuneService;
 
-    public  BaseballCoach(FortuneService fortuneService){
-        this.fortuneService = fortuneService;
-    }
+
     @Override
     public String getDailyWorkout(){
         return "Spend 30 minutes on batting practice";
@@ -23,11 +23,9 @@ public class BaseballCoach implements Coach, DisposableBean {
         return this.fortuneService.getFortune();
     }
 
-    public void init(){
-        System.out.println("Initializing a Baseball Coach...");
-    }
-
-    public void destroy(){
-        System.out.println("Destroying a Baseball Coach...");
+    @Autowired
+    @Qualifier("happyFortuneService")
+    public void insertTheFortune(FortuneService fortuneService){
+        this.fortuneService = fortuneService;
     }
 }

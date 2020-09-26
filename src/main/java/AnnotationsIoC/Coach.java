@@ -1,4 +1,4 @@
-package Beans;
+package AnnotationsIoC;
 
 public interface Coach {
 

@@ -22,7 +22,10 @@
     </bean>
 
     <bean id="customProcessor"
-          class="Beans.MyCustomBeanProcessor">
+          class="Beans.MyCustomBeanProcessor"
+          scope="singleton"
+    >
+
     </bean>
 </beans>
 

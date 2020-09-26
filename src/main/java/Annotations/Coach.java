@@ -1,7 +1,6 @@
-package Beans;
+package Annotations;
 
 public interface Coach {
 
     public String getDailyWorkout();
-    public String getDailyFortune();
 }

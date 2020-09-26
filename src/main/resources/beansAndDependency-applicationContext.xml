@@ -17,7 +17,7 @@
     >
     </bean>
     <bean id="baseballCoach"
-        class = "springdemo.BaseballCoach"
+        class = "Beans.BaseballCoach"
     >
         <constructor-arg ref="fortuneService"/>
     </bean>
